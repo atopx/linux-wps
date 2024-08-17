@@ -1,47 +1,27 @@
 # linux-wps
 
-Linux 打包 安装 WPS365 (wps-office_12.8.2.15283)
+Linux 打包 安装 WPS365 (wps-office_12.8.2.17001)
 
 
 # 已测试
 
+- ubuntu 22.04
 - ubuntu 24.04
 
 ![](image.png)
 
 
-# 操作步骤
+# 一键安装
 
-## 1. 克隆仓库
+### wget
 
 ```sh
-git clone https://github.com/atopx/linux-wps.git
+wget -qO- https://raw.githubusercontent.com/atopx/linux-wps/master/install.sh | bash
 ```
 
-## 2. 安装依赖
-
+### curl
 ```sh
-sudo apt-get install -y debhelper-compat=12 patchelf
-```
-
-## 3. 解压缩
-
-```sh
-mkdir wps-365 && tar -Jxvf wps-365.tar.xz -C wps-365
-```
-
-## 4. 打包
-
-```sh
-cd wps-365
-dpkg-buildpackage -us -uc
-```
-
-## 5. 安装
-
-```sh
-cd -
-sudo dpkg -i wps-office_12.8.2.15283-myubuntu_amd64.deb
+curl -sSL https://raw.githubusercontent.com/atopx/linux-wps/master/install.sh | bash
 ```
 
 # 常见问题
@@ -50,4 +30,12 @@ sudo dpkg -i wps-office_12.8.2.15283-myubuntu_amd64.deb
 
 ```sh
 rm -rf $HOME/.config/Kingsoft $HOME/.local/share/Kingsoft
+```
+
+### 神秘代码
+
+```sh
+694BF-YUDBG-EAR69-BPRGB-ATQXH
+# 使用后执行
+sudo chmod 444 /opt/kingsoft/.auth/license2.dat
 ```
